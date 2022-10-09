@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Alkalami&family=Lexend:wght@300;400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Alkalami&family=Lexend&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Coding Bootcamp JavaScript Quiz</title>
 </head>
 <body>
-    
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1 btn" id="reset">Reset</span>
+        <span class="navbar btn">High Scores</span>
+    </nav>
+    <div class="container">
+        <div class ="row">
+            <div class="card col align-self-center">
+                <div class="card-header row">
+                    <div class="col">Quiz</div>
+                    <div class="col text-right time">Timer: 60s</div>
+                </div>
+                <div class="card-body">
+                <h5 class="card-title" id="question-theme">Proficiency quiz</h5>
+                <p class="card-text" id="question-full">Are you ready to take a proficiency quiz?</p>
+                <a href="#" class="btn btn-primary" id="start">Begin</a>
+                <a href="#" class="btn btn-primary" id="answer-a" style="display: none;">Answer A</a>
+                <a href="#" class="btn btn-primary" id="answer-b" style="display: none;">Answer B</a>
+                <a href="#" class="btn btn-primary" id="answer-c" style="display: none;">Answer C</a>
+                <a href="#" class="btn btn-primary" id="answer-d" style="display: none;">Answer D</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="./assets/js/script.js"></script>
 </html>
