@@ -10,9 +10,8 @@ var answerBInput = $("#answer-b");
 var answerCInput = $("#answer-c");
 var answerDInput = $("#answer-d");
 var currentQuestion = -1;
-var answerCorrect = 1;
-var answerIncorrect = 0;
 var totalScore = 0;
+var highScores = $('#scores');
 
 var questionBank = [
     ['Shapes',
@@ -40,28 +39,23 @@ var questionBank = [
 
 function runTimer() {
     if (gameStarted === true) {
-        // get rid of "begin" button
-        // add question and answers buttons
         var timerInterval = setInterval(function() {
             secondsLeft--;
             timeEl.text("Timer: " + secondsLeft + "s");
-
             if(secondsLeft === 0) {
-            console.log("Timer Ended");
-            clearInterval(timerInterval);
-            gameStarted = false;
-            confirm("Your time ran out!");
-            // show score
-            // prompt for initials
-            // store initials
-            // show high scores
+                console.log("Timer Ended");
+                clearInterval(timerInterval);
+                gameStarted = false;
+                confirm("Your time ran out!");
+                scoreGame();
             }
-
         }, 1000);
-    }
+    } return;
 }
 
-
+// function getInitials() {
+//     var playerInitials = prompt('What are your initials?');
+// }
 
 function resetGame() {
 
@@ -79,7 +73,9 @@ function resetGame() {
 }
 
 function scoreGame() {
-
+    localStorage.setItem('playerInitials', prompt('Your score was ' + totalScore + '. What are your initials?'));
+    localStorage.setItem('score', totalScore);
+    resetGame();
 }
 
 function nextQuestion() { 
@@ -97,12 +93,20 @@ function nextQuestion() {
         answerDInput.text(questionBank[currentQuestion][5]);
         console.log(totalScore);
     } else {
+        gameStarted = false;
         console.log(totalScore);
         console.log("End of question bank");
+
+        scoreGame();
     }
 }
 
+highScores.click(function() {
+    console.log("High Scores was clicked");
+});
+
 startGame.click(function() {
+    secondsLeft = 0;
     startGame.hide();
     gameStarted = true;
     runTimer();
